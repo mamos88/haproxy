@@ -1,0 +1,16 @@
+variables:
+  - group: aws-group
+  - group: common
+  
+trigger: none
+  
+stages:
+
+- stage: Deploy_Nomad_Job
+  displayName: Setup Step
+  jobs:
+  - job:
+    pool: $(agent_pool)
+    steps:
+    - template: templates/add-whitelist-aws-template.yml
+    - template: templates/deploy-nomad-job.yml
