@@ -7,5 +7,5 @@ steps:
   displayName: Install Nomad
 - bash: nomad run -address=$(nomad_server_url) haproxy.nomad
   workingDirectory: '$(Build.SourcesDirectory)'
-  displayName: Deploy MyApp
+  displayName: Deploy HAProxy
   
