@@ -1,6 +1,7 @@
 variables:
   - group: aws-group
   - group: common
+  - group: nomad-variables
   
 trigger: none
   
