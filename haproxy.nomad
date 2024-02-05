@@ -57,6 +57,10 @@ frontend http_front
     acl ACL_chris.michaelamos.ninja hdr(host) -i chris.michaelamos.ninja
     use_backend be_chris if ACL_chris.michaelamos.ninja
 
+    # ACL for ryan.michaelamos.ninja
+    acl ACL_ryan.michaelamos.ninja hdr(host) -i ryan.michaelamos.ninja
+    use_backend be_ryan if ACL_ryan.michaelamos.ninja
+
     # ACL for myapp.michaelamos.ninja
     acl ACL_myapp.michaelamos.ninja hdr(host) -i myapp.michaelamos.ninja
     use_backend be_myapp if ACL_myapp.michaelamos.ninja
@@ -77,6 +81,10 @@ frontend http_front
 backend be_chris
     balance roundrobin
     server-template chrisapp 10 _chris-app._tcp.service.consul resolvers consul resolve-opts allow-dup-ip resolve-prefer ipv4 check
+
+backend be_ryan
+    balance roundrobin
+    server-template ryan 10 _ryan._tcp.service.consul resolvers consul resolve-opts allow-dup-ip resolve-prefer ipv4 check
 
 backend be_http-echo
     balance roundrobin
